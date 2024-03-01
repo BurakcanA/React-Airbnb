@@ -1,19 +1,18 @@
 import React, { PureComponent } from "react";
-import picture from '../assets/katie-zaferes.png'
-import star from '../assets/star.png'
 
-export default function Card() {
+export default function Card(props) {
     return (
         <div className="card">
-            <img className="card--image" src={picture}></img>
+            {/* {`../images/${props.img}`} ES6 */}
+            <img className="card--image" src={`/public/assets/${props.img}`}></img>
             <div className="card--stats">
-                <img className="card--star" src={star} height={15}></img>
-                <span>5.0</span>
-                <span className="gray">(6) •</span>
-                <span className="gray">USA</span>
+                <img className="card--star" src="/public/assets/star.png" height={15}></img>
+                <span>{props.rating}</span>
+                <span className="gray">({props.reviewCount}) •</span>
+                <span className="gray">{props.location}</span>
             </div>
-            <h2>Life Lessons with Katie Zaferes</h2>
-            <p><span className="bold">From $136 </span>/ person</p>
+            <p className="card--title">{props.title}</p>
+            <p className="card--price"><span className="bold">From ${props.price}</span> / person</p>
         </div>
     )
 }
